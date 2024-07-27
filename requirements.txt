@@ -9,3 +9,4 @@ seaborn==0.13.2
 requests
 plotly_express
 folium
+streamlit_folium
