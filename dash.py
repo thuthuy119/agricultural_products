@@ -21,7 +21,8 @@ def load_data(url):
     data = pd.read_excel(BytesIO(response.content), engine='openpyxl')
     return data
 
-file_path_data = "https://github.com/thuthuy119/agricultural_products/blob/main/TradeData_DriedMango_processed.xlsx"
+# Sử dụng URL dạng thô để tải file Excel từ GitHub
+file_path_data = "https://raw.githubusercontent.com/thuthuy119/agricultural_products/main/TradeData_DriedMango_processed.xlsx"
 data = load_data(file_path_data)
 
 # Lấy các giá trị duy nhất trong cột "Product"
