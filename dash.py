@@ -15,7 +15,7 @@ st.set_page_config(
 
 @st.cache_data
 def load_data(file_path):
-    data = pd.read_excel(file_path)
+    data = pd.read_excel(file_path, engine='openpyxl')
     return data
 
 file_path_data = "https://github.com/thuthuy119/agricultural_products/blob/main/TradeData_DriedMango_processed.xlsx"
