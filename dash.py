@@ -18,7 +18,7 @@ def load_data(file_path):
     data = pd.read_excel(file_path)
     return data
 
-file_path_data = "C:/Users/admin/OneDrive - ftu.edu.vn/Máy tính/trade analytics/DriedMango/TradeData_DriedMango_processed.xlsx"
+file_path_data = "https://github.com/thuthuy119/agricultural_products/blob/main/TradeData_DriedMango_processed.xlsx"
 data = load_data(file_path_data)
 
 # Lấy các giá trị duy nhất trong cột "Product"
