@@ -7,6 +7,8 @@ import plotly.graph_objects as go
 import streamlit as st
 from streamlit_folium import folium_static
 import streamlit.components.v1 as components
+import requests
+from io import BytesIO
 
 
 st.set_page_config(
@@ -15,6 +17,8 @@ st.set_page_config(
 
 @st.cache_data
 def load_data(file_path):
+    response = requests.get(url)
+    response.raise_for_status()  # Kiểm tra xem có lỗi khi tải file không
     data = pd.read_excel(file_path)
     return data
 
