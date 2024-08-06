@@ -18,13 +18,13 @@ def load_data(file_path):
     data = pd.read_excel(file_path)
     return data
 
-file_path_data = "C:/Users/admin/OneDrive - ftu.edu.vn/Máy tính/trade analytics/DriedMango/TradeData_DriedMango_processed.xlsx"
+file_path_data = "https://github.com/thuthuy119/agricultural_products/blob/main/TradeData_DriedMango_processed.xlsx"
 data = load_data(file_path_data)
 data['Supplier_code'] = data['Supplier_code'].fillna(0).astype("int64").astype("object").apply(lambda x: str(x).zfill(10)) 
 data['Purchaser_code'] = data['Purchaser_code'].fillna(0).astype("int64").astype("object").apply(lambda x: str(x).zfill(10)) 
 
 
-file_path_data_tctk = "C:/Users/admin/OneDrive - ftu.edu.vn/Máy tính/trade analytics/DriedMango/data_doanh_nghiep_TCTK.xlsx"
+file_path_data_tctk = "https://github.com/thuthuy119/agricultural_products/blob/main/data_doanh_nghiep_TCTK.xlsx"
 data_tctk = load_data(file_path_data_tctk)
 data_tctk['Mã số thuế'] = data_tctk['Mã số thuế'].fillna(0).astype("int64").astype("object").apply(lambda x: str(x).zfill(10)) 
 
