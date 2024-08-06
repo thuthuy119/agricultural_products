@@ -10,25 +10,26 @@ import streamlit.components.v1 as components
 import requests
 from io import BytesIO
 
-
 st.set_page_config(
     layout="wide",
-    initial_sidebar_state="expanded")
+    initial_sidebar_state="expanded"
+)
 
 @st.cache_data
 def load_data(file_path):
-    response = requests.get(url)
+    response = requests.get(file_path)
     response.raise_for_status()  # Kiểm tra xem có lỗi khi tải file không
-    data = pd.read_excel(file_path)
+    data = pd.read_excel(BytesIO(response.content))
     return data
 
+# URL cho tệp dữ liệu
 file_path_data = "https://raw.githubusercontent.com/thuthuy119/agricultural_products/main/TradeData_DriedMango_processed.xlsx"
 data = load_data(file_path_data)
 data['Supplier_code'] = data['Supplier_code'].fillna(0).astype("int64").astype("object").apply(lambda x: str(x).zfill(10)) 
 data['Purchaser_code'] = data['Purchaser_code'].fillna(0).astype("int64").astype("object").apply(lambda x: str(x).zfill(10)) 
 
-
-file_path_data_tctk = "https://raw.githubusercontent.com/agricultural_products/blob/main/data_doanh_nghiep_TCTK.xlsx"
+# URL cho tệp dữ liệu TCTK
+file_path_data_tctk = "https://raw.githubusercontent.com/thuthuy119/agricultural_products/main/data_doanh_nghiep_TCTK.xlsx"
 data_tctk = load_data(file_path_data_tctk)
 data_tctk['Mã số thuế'] = data_tctk['Mã số thuế'].fillna(0).astype("int64").astype("object").apply(lambda x: str(x).zfill(10)) 
 
